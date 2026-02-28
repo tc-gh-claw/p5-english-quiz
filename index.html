@@ -116,6 +116,41 @@
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
+        .menu-btn.warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        /* Quiz Mode Selection */
+        .quiz-mode-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .mode-btn {
+            background: #f7fafc;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .mode-btn:hover {
+            border-color: #667eea;
+            background: #e0e7ff;
+        }
+
+        .mode-btn.active {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
         /* Quiz Section */
         .quiz-header {
             display: flex;
@@ -276,6 +311,16 @@
             border-color: #667eea;
         }
 
+        .sentence-context {
+            font-size: 1.1rem;
+            color: #718096;
+            margin-top: 15px;
+            padding: 15px;
+            background: #e6fffa;
+            border-radius: 10px;
+            border-left: 4px solid #38b2ac;
+        }
+
         /* Action Buttons */
         .action-btns {
             display: flex;
@@ -418,10 +463,22 @@
             background: #f7fafc;
         }
 
+        .vocab-left {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
         .vocab-word {
             font-size: 1.2rem;
             font-weight: 700;
             color: #2d3748;
+        }
+
+        .vocab-ipa {
+            font-size: 0.95rem;
+            color: #667eea;
+            font-family: 'Nunito', sans-serif;
         }
 
         .vocab-type {
@@ -433,6 +490,33 @@
         .vocab-meaning {
             color: #4a5568;
             font-size: 1rem;
+            text-align: right;
+        }
+
+        .vocab-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .vocab-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .vocab-btn.pronounce {
+            background: #e0e7ff;
+            color: #5a67d8;
+        }
+
+        .vocab-btn.pronounce:hover {
+            background: #667eea;
+            color: white;
         }
 
         /* Hidden sections */
@@ -454,6 +538,26 @@
             animation: fadeIn 0.5s ease;
         }
 
+        /* Hint Box */
+        .hint-box {
+            background: #fef5e7;
+            border-left: 4px solid #f6ad55;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .hint-title {
+            font-weight: 700;
+            color: #c05621;
+            margin-bottom: 5px;
+        }
+
+        .hint-text {
+            color: #744210;
+            font-size: 0.95rem;
+        }
+
         /* Responsive */
         @media (max-width: 600px) {
             .header h1 {
@@ -464,8 +568,22 @@
                 grid-template-columns: 1fr;
             }
             
+            .quiz-mode-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .action-btns {
                 flex-direction: column;
+            }
+
+            .vocab-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .vocab-meaning {
+                text-align: left;
             }
         }
     </style>
@@ -484,17 +602,21 @@
             <div class="card">
                 <h2 class="card-title">📚 選擇測驗類型</h2>
                 <div class="menu-grid">
-                    <button class="menu-btn" onclick="startVocabQuiz('unit2')">
+                    <button class="menu-btn" onclick="showQuizModeSelection('unit2')">
                         <span class="icon">🏠</span>
                         <span>Unit 2<br>家居</span>
                     </button>
-                    <button class="menu-btn" onclick="startVocabQuiz('unit3')">
+                    <button class="menu-btn" onclick="showQuizModeSelection('unit3')">
                         <span class="icon">🏆</span>
                         <span>Unit 3<br>運動比賽</span>
                     </button>
-                    <button class="menu-btn" onclick="startVocabQuiz('unit4')">
+                    <button class="menu-btn" onclick="showQuizModeSelection('unit4')">
                         <span class="icon">🍽️</span>
                         <span>Unit 4<br>外出用餐</span>
+                    </button>
+                    <button class="menu-btn warning" onclick="startFillInBlankQuiz()">
+                        <span class="icon">✍️</span>
+                        <span>填空題練習</span>
                     </button>
                     <button class="menu-btn secondary" onclick="startGrammarQuiz()">
                         <span class="icon">✏️</span>
@@ -506,9 +628,32 @@
                     </button>
                     <button class="menu-btn success" onclick="showVocabulary()">
                         <span class="icon">📖</span>
-                        <span>溫習生字</span>
+                        <span>溫習生字<br>+讀音</span>
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Quiz Mode Selection -->
+        <div id="quiz-mode-section" class="section">
+            <div class="card">
+                <h2 class="card-title">🎯 選擇題目類型</h2>
+                <p style="margin-bottom: 20px; color: #718096;">揀你想練習嘅模式：</p>
+                
+                <div class="quiz-mode-grid">
+                    <button class="mode-btn" onclick="selectQuizMode('choice')">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🔘</div>
+                        <div>選擇題</div>
+                        <div style="font-size: 0.85rem; color: #718096; margin-top: 5px;">揀正確答案</div>
+                    </button>
+                    <button class="mode-btn" onclick="selectQuizMode('fill')">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">✍️</div>
+                        <div>填空題</div>
+                        <div style="font-size: 0.85rem; color: #718096; margin-top: 5px;">填入生字</div>
+                    </button>
+                </div>
+
+                <button class="btn btn-secondary" onclick="backToMenu()" style="width: 100%; margin-top: 20px;">返回選單</button>
             </div>
         </div>
 
@@ -565,12 +710,18 @@
         <!-- Vocabulary Section -->
         <div id="vocab-section" class="section">
             <div class="card">
-                <h2 class="card-title">📖 溫習生字</h2>
+                <h2 class="card-title">📖 溫習生字 + 讀音</h2>
                 <div class="menu-grid" style="margin-bottom: 20px;">
                     <button class="menu-btn" onclick="showUnitVocab('unit2')">Unit 2 - 家居</button>
                     <button class="menu-btn" onclick="showUnitVocab('unit3')">Unit 3 - 運動比賽</button>
                     <button class="menu-btn" onclick="showUnitVocab('unit4')">Unit 4 - 外出用餐</button>
                 </div>
+                
+                <div class="hint-box">
+                    <div class="hint-title">💡 學習小貼士</div>
+                    <div class="hint-text">撳「🔊 讀音」按鈕可以聽到生字嘅發音，幫助你學習正確讀法！</div>
+                </div>
+
                 <div id="vocab-list-container" class="vocab-list">
                     <!-- Vocabulary list will be inserted here -->
                 </div>
@@ -588,6 +739,8 @@
         let correctAnswers = 0;
         let selectedOption = null;
         let answered = false;
+        let selectedUnit = null;
+        let selectedMode = null;
 
         // Load quiz data
         async function loadQuizData() {
@@ -596,60 +749,61 @@
                 quizData = await response.json();
             } catch (error) {
                 console.error('Failed to load quiz data:', error);
-                // Fallback data
                 quizData = getFallbackData();
             }
         }
 
         function getFallbackData() {
-            // Fallback data if JSON file not found
             return {
                 units: [
                     {
                         id: 'unit2',
                         name: 'Unit 2 - 家居',
                         vocabulary: [
-                            {word: 'apartment', type: 'n.', meaning: '公寓'},
-                            {word: 'furniture', type: 'n.', meaning: '傢俬'},
-                            {word: 'spacious', type: 'adj.', meaning: '寬敞的'}
-                        ]
-                    },
-                    {
-                        id: 'unit3', 
-                        name: 'Unit 3 - 運動比賽',
-                        vocabulary: [
-                            {word: 'competition', type: 'n.', meaning: '比賽'},
-                            {word: 'athlete', type: 'n.', meaning: '運動員'},
-                            {word: 'participate', type: 'v.', meaning: '參加'}
-                        ]
-                    },
-                    {
-                        id: 'unit4',
-                        name: 'Unit 4 - 外出用餐', 
-                        vocabulary: [
-                            {word: 'delicious', type: 'adj.', meaning: '美味的'},
-                            {word: 'restaurant', type: 'n.', meaning: '餐廳'},
-                            {word: 'recommend', type: 'v.', meaning: '推薦'}
+                            {word: 'apartment', ipa: '/əˈpɑːrtmənt/', type: 'n.', meaning: '公寓'},
+                            {word: 'furniture', ipa: '/ˈfɜːrnɪtʃər/', type: 'n.', meaning: '傢俬'},
+                            {word: 'spacious', ipa: '/ˈspeɪʃəs/', type: 'adj.', meaning: '寬敞的'}
                         ]
                     }
                 ],
-                grammar: {
-                    tenses: [
-                        {
-                            type: 'multiple_choice',
-                            question: 'She _____ to school every day.',
-                            options: ['go', 'goes', 'going', 'went'],
-                            answer: 1,
-                            explanation: 'Present Simple - 第三人稱單數加 "es"'
-                        }
-                    ],
-                    articles: [],
-                    relative_pronouns: []
-                }
+                fill_in_blanks: [],
+                grammar: { tenses: [], articles: [], relative_pronouns: [] }
             };
         }
 
-        // Generate vocabulary questions
+        // Show quiz mode selection
+        function showQuizModeSelection(unitId) {
+            selectedUnit = unitId;
+            document.getElementById('menu-section').classList.remove('active');
+            document.getElementById('quiz-mode-section').classList.add('active');
+            
+            // Reset mode buttons
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+        }
+
+        // Select quiz mode
+        function selectQuizMode(mode) {
+            selectedMode = mode;
+            
+            // Update UI
+            document.querySelectorAll('.mode-btn').forEach((btn, index) => {
+                btn.classList.remove('active');
+                if ((mode === 'choice' && index === 0) || (mode === 'fill' && index === 1)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Start quiz after short delay
+            setTimeout(() => {
+                if (mode === 'choice') {
+                    startVocabQuiz(selectedUnit);
+                } else {
+                    startUnitFillInBlank(selectedUnit);
+                }
+            }, 300);
+        }
+
+        // Generate vocabulary questions (choice mode)
         function generateVocabQuestions(unitId, count = 10) {
             const unit = quizData.units.find(u => u.id === unitId);
             if (!unit) return [];
@@ -657,19 +811,16 @@
             const questions = [];
             const vocab = [...unit.vocabulary];
             
-            // Shuffle vocabulary
             for (let i = vocab.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [vocab[i], vocab[j]] = [vocab[j], vocab[i]];
             }
 
-            // Generate questions
             for (let i = 0; i < Math.min(count, vocab.length); i++) {
                 const word = vocab[i];
                 const questionType = Math.random() > 0.5 ? 'meaning_to_word' : 'word_to_meaning';
                 
                 if (questionType === 'meaning_to_word') {
-                    // Show meaning, ask for English word
                     const options = [word.word];
                     const otherWords = vocab.filter(w => w.word !== word.word);
                     
@@ -682,7 +833,6 @@
                         otherWords.splice(randomIndex, 1);
                     }
                     
-                    // Shuffle options
                     for (let j = options.length - 1; j > 0; j--) {
                         const k = Math.floor(Math.random() * (j + 1));
                         [options[j], options[k]] = [options[k], options[j]];
@@ -692,12 +842,12 @@
                         type: 'multiple_choice',
                         question: `"${word.meaning}" 的英文是什麼？`,
                         word: word.word,
+                        ipa: word.ipa,
                         options: options,
                         answer: options.indexOf(word.word),
-                        explanation: `${word.word} (${word.type}) = ${word.meaning}`
+                        explanation: `${word.word} ${word.ipa} (${word.type}) = ${word.meaning}`
                     });
                 } else {
-                    // Show English word, ask for meaning
                     const options = [word.meaning];
                     const otherWords = vocab.filter(w => w.word !== word.word);
                     
@@ -717,16 +867,91 @@
 
                     questions.push({
                         type: 'multiple_choice',
-                        question: `"${word.word}" 是什麼意思？`,
+                        question: `"${word.word}" ${word.ipa} 是什麼意思？`,
                         word: word.word,
+                        ipa: word.ipa,
                         options: options,
                         answer: options.indexOf(word.meaning),
-                        explanation: `${word.word} (${word.type}) = ${word.meaning}`
+                        explanation: `${word.word} ${word.ipa} (${word.type}) = ${word.meaning}`
                     });
                 }
             }
 
             return questions;
+        }
+
+        // Generate fill in blank questions for unit
+        function generateUnitFillInBlank(unitId, count = 10) {
+            const unit = quizData.units.find(u => u.id === unitId);
+            if (!unit) return [];
+
+            const questions = [];
+            const vocab = [...unit.vocabulary].filter(w => w.word.indexOf(' ') === -1); // Only single words
+            
+            for (let i = vocab.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [vocab[i], vocab[j]] = [vocab[j], vocab[i]];
+            }
+
+            const sentenceTemplates = [
+                { template: "The _____ is very important for our home.", context: "這個_____對我們的家很重要。" },
+                { template: "Please help me _____ the room.", context: "請幫我_____房間。" },
+                { template: "I like this _____ very much.", context: "我很喜歡這個_____。" },
+                { template: "We need to buy a new _____.", context: "我們需要買一個新的_____。" },
+                { template: "The _____ looks very nice.", context: "這個_____看起來很好。" },
+                { template: "Can you see the _____ over there?", context: "你能看到那邊的_____嗎？" },
+                { template: "My mother likes to _____ every day.", context: "我媽媽喜歡每天_____。" },
+                { template: "This _____ is very useful.", context: "這個_____很有用。" },
+                { template: "We should keep the _____ clean.", context: "我們應該保持_____乾淨。" },
+                { template: "The _____ makes me feel happy.", context: "這個_____令我感到開心。" }
+            ];
+
+            for (let i = 0; i < Math.min(count, vocab.length); i++) {
+                const word = vocab[i];
+                const template = sentenceTemplates[i % sentenceTemplates.length];
+                
+                questions.push({
+                    type: 'fill_blank',
+                    question: template.template.replace('_____', '______'),
+                    answer: word.word,
+                    ipa: word.ipa,
+                    chinese: template.context.replace('_____', word.meaning),
+                    hint: word.meaning,
+                    explanation: `${word.word} ${word.ipa} = ${word.meaning}`
+                });
+            }
+
+            return questions;
+        }
+
+        // Start fill in blank quiz for unit
+        function startUnitFillInBlank(unitId) {
+            currentQuestions = generateUnitFillInBlank(unitId, 10);
+            startQuiz();
+        }
+
+        // Start general fill in blank quiz
+        function startFillInBlankQuiz() {
+            if (quizData.fill_in_blanks && quizData.fill_in_blanks.length > 0) {
+                const blanks = [...quizData.fill_in_blanks];
+                for (let i = blanks.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [blanks[i], blanks[j]] = [blanks[j], blanks[i]];
+                }
+                
+                currentQuestions = blanks.slice(0, 10).map(q => ({
+                    type: 'fill_blank',
+                    question: q.sentence,
+                    answer: q.answer,
+                    chinese: q.chinese,
+                    hint: q.answer,
+                    explanation: `${q.answer} = ${q.chinese}`
+                }));
+            } else {
+                // Fallback: use unit fill in blank
+                currentQuestions = generateUnitFillInBlank('unit4', 10);
+            }
+            startQuiz();
         }
 
         // Start vocabulary quiz
@@ -749,7 +974,6 @@
                 grammarQuestions.push(...quizData.grammar.relative_pronouns);
             }
 
-            // Shuffle and take 10
             for (let i = grammarQuestions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [grammarQuestions[i], grammarQuestions[j]] = [grammarQuestions[j], grammarQuestions[i]];
@@ -763,17 +987,14 @@
         function startMixedQuiz() {
             const allQuestions = [];
             
-            // Add vocab questions from all units
             quizData.units.forEach(unit => {
-                allQuestions.push(...generateVocabQuestions(unit.id, 3));
+                allQuestions.push(...generateVocabQuestions(unit.id, 2));
             });
 
-            // Add grammar questions
             if (quizData.grammar.tenses) {
                 allQuestions.push(...quizData.grammar.tenses.slice(0, 3));
             }
 
-            // Shuffle
             for (let i = allQuestions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [allQuestions[i], allQuestions[j]] = [allQuestions[j], allQuestions[i]];
@@ -797,6 +1018,7 @@
             selectedOption = null;
 
             document.getElementById('menu-section').classList.remove('active');
+            document.getElementById('quiz-mode-section').classList.remove('active');
             document.getElementById('quiz-section').classList.add('active');
             document.getElementById('results-section').classList.remove('active');
 
@@ -814,7 +1036,7 @@
 
             let html = `
                 <div class="question-card">
-                    <div class="question-type">第 ${currentQuestionIndex + 1} 題</div>
+                    <div class="question-type">第 ${currentQuestionIndex + 1} 題${question.ipa ? ' • 讀音: ' + question.ipa : ''}</div>
                     <div class="question-text">${question.question}</div>
                 </div>
             `;
@@ -833,15 +1055,21 @@
                 html += '</div>';
             } else if (question.type === 'fill_blank') {
                 html += `
-                    <input type="text" class="fill-input" id="fill-answer" placeholder="請輸入答案...">
+                    <div class="hint-box">
+                        <div class="hint-title">💡 提示</div>
+                        <div class="hint-text">填入適當的生字 (Hint: ${question.hint || question.answer})</div>
+                    </div>
+                    <input type="text" class="fill-input" id="fill-answer" placeholder="請輸入答案 (小寫即可)..." autocomplete="off">
                 `;
+                if (question.chinese) {
+                    html += `<div class="sentence-context">📝 中文意思：${question.chinese}</div>`;
+                }
             }
 
             html += '<div id="feedback" class="feedback"></div>';
 
             container.innerHTML = html;
 
-            // Reset buttons
             document.getElementById('check-btn').style.display = 'block';
             document.getElementById('check-btn').disabled = false;
             document.getElementById('next-btn').style.display = 'none';
@@ -861,6 +1089,18 @@
             });
         }
 
+        // Text to speech
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            } else {
+                alert('你的瀏覽器不支持語音功能');
+            }
+        }
+
         // Check answer
         function checkAnswer() {
             if (answered) return;
@@ -877,13 +1117,27 @@
                 }
                 isCorrect = selectedOption === question.answer;
             } else if (question.type === 'fill_blank') {
-                const answer = document.getElementById('fill-answer').value.trim().toLowerCase();
-                isCorrect = answer === question.answer.toLowerCase();
+                const inputEl = document.getElementById('fill-answer');
+                if (!inputEl) return;
+                
+                const answer = inputEl.value.trim().toLowerCase();
+                if (!answer) {
+                    alert('請輸入答案！');
+                    return;
+                }
+                
+                // Check if answer matches (support multiple forms)
+                const correctAnswers = question.answer.toLowerCase().split('/').map(a => a.trim());
+                isCorrect = correctAnswers.includes(answer);
+                
+                // Also check without spaces for phrases
+                if (!isCorrect && answer.replace(/\s/g, '') === question.answer.toLowerCase().replace(/\s/g, '')) {
+                    isCorrect = true;
+                }
             }
 
             answered = true;
 
-            // Show correct/wrong styling
             if (question.type === 'multiple_choice') {
                 document.querySelectorAll('.option-btn').forEach((btn, i) => {
                     if (i === question.answer) {
@@ -894,27 +1148,30 @@
                 });
             }
 
-            // Update score
             if (isCorrect) {
                 score += 10;
                 correctAnswers++;
                 feedbackEl.className = 'feedback correct';
-                feedbackEl.innerHTML = `✅ 正確！<div class="explanation">${question.explanation || ''}</div>`;
+                feedbackEl.innerHTML = `✅ 正確！${question.ipa ? '<br>讀音: ' + question.ipa : ''}<div class="explanation">${question.explanation || ''}</div>`;
+                
+                // Auto pronounce correct word
+                if (question.word || question.answer) {
+                    const wordToSpeak = question.word || question.answer.split('/')[0].trim();
+                    setTimeout(() => speakWord(wordToSpeak), 500);
+                }
             } else {
                 feedbackEl.className = 'feedback wrong';
                 const correctAnswer = question.type === 'multiple_choice' 
                     ? question.options[question.answer] 
                     : question.answer;
-                feedbackEl.innerHTML = `❌ 錯誤！正確答案是: ${correctAnswer}<div class="explanation">${question.explanation || ''}</div>`;
+                feedbackEl.innerHTML = `❌ 錯誤！正確答案是: <strong>${correctAnswer}</strong>${question.ipa ? ' ' + question.ipa : ''}<div class="explanation">${question.explanation || ''}</div>`;
             }
 
             document.getElementById('score').textContent = score;
 
-            // Switch buttons
             document.getElementById('check-btn').style.display = 'none';
             document.getElementById('next-btn').style.display = 'block';
 
-            // Check if last question
             if (currentQuestionIndex === currentQuestions.length - 1) {
                 document.getElementById('next-btn').textContent = '查看成績';
             }
@@ -983,9 +1240,15 @@
             unit.vocabulary.forEach(item => {
                 html += `
                     <div class="vocab-item">
-                        <div>
-                            <span class="vocab-word">${item.word}</span>
-                            <span class="vocab-type">${item.type}</span>
+                        <div class="vocab-left">
+                            <div>
+                                <span class="vocab-word">${item.word}</span>
+                                <span class="vocab-type">${item.type}</span>
+                            </div>
+                            <div class="vocab-ipa">${item.ipa || ''}</div>
+                            <div class="vocab-actions">
+                                <button class="vocab-btn pronounce" onclick="speakWord('${item.word}')">🔊 讀音</button>
+                            </div>
                         </div>
                         <div class="vocab-meaning">${item.meaning}</div>
                     </div>
@@ -997,7 +1260,10 @@
 
         // Back to menu
         function backToMenu() {
+            selectedUnit = null;
+            selectedMode = null;
             document.getElementById('menu-section').classList.add('active');
+            document.getElementById('quiz-mode-section').classList.remove('active');
             document.getElementById('quiz-section').classList.remove('active');
             document.getElementById('results-section').classList.remove('active');
             document.getElementById('vocab-section').classList.remove('active');
