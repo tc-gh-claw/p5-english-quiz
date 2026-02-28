@@ -6,6 +6,8 @@
     <title>小五英文測驗 - 蝦仔出題</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- ResponsiveVoice for better TTS -->
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=ktuS1y2e"></script>
     <style>
         * {
             margin: 0;
@@ -1089,16 +1091,95 @@
             });
         }
 
-        // Text to speech
-        function speakWord(word) {
+        // Text to speech with multiple fallback options
+        let currentVoice = null;
+        let availableVoices = [];
+        
+        // Initialize voices
+        function initVoices() {
             if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(word);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.8;
-                speechSynthesis.speak(utterance);
-            } else {
-                alert('你的瀏覽器不支持語音功能');
+                availableVoices = speechSynthesis.getVoices();
+                
+                // 揀個最靚嘅聲音
+                const preferredVoices = [
+                    'Google US English',
+                    'Samantha',  // macOS 靚聲
+                    'Daniel',    // macOS 英國腔
+                    'Google UK English Female',
+                    'Microsoft Zira - English (United States)',
+                    'Microsoft David - English (United States)',
+                    'Google UK English Male',
+                    'Karen',     // macOS 澳洲腔
+                    'Victoria',  // macOS
+                    'Alex'       // macOS
+                ];
+                
+                for (const voiceName of preferredVoices) {
+                    const voice = availableVoices.find(v => v.name.includes(voiceName));
+                    if (voice) {
+                        currentVoice = voice;
+                        console.log('Selected voice:', voice.name);
+                        break;
+                    }
+                }
+                
+                // 如果揀唔到，用第一個英文聲
+                if (!currentVoice) {
+                    currentVoice = availableVoices.find(v => v.lang.startsWith('en'));
+                }
             }
+        }
+        
+        // Preload voices
+        if ('speechSynthesis' in window) {
+            initVoices();
+            speechSynthesis.onvoiceschanged = initVoices;
+        }
+        
+        // Speak word with better voice
+        async function speakWord(word) {
+            // 先試 ResponsiveVoice（如果 load 咗）
+            if (typeof responsiveVoice !== 'undefined' && responsiveVoice.isPlaying() === false) {
+                responsiveVoice.speak(word, "UK English Female", {
+                    rate: 0.9,
+                    pitch: 1,
+                    volume: 1
+                });
+                return;
+            }
+            
+            // Fallback to Web Speech API
+            fallbackSpeak(word);
+        }
+
+        // Fallback speech using Web Speech API
+        function fallbackSpeak(word) {
+            if (!('speechSynthesis' in window)) {
+                alert('你的瀏覽器不支持語音功能');
+                return;
+            }
+            
+            // 停咗舊嘅
+            speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.lang = 'en-GB';  // 英國腔通常靚啲
+            utterance.rate = 0.75;     // 慢啲清楚啲
+            utterance.pitch = 1;       // 正常音調
+            
+            if (currentVoice) {
+                utterance.voice = currentVoice;
+            }
+            
+            speechSynthesis.speak(utterance);
+        }
+        
+        // Get voice quality info
+        function getVoiceInfo() {
+            if (currentVoice) {
+                return `🎙️ 現用聲音: ${currentVoice.name}`;
+            }
+            return '🎙️ 使用預設聲音';
         }
 
         // Check answer
