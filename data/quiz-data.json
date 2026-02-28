@@ -1,0 +1,191 @@
+{
+  "units": [
+    {
+      "id": "unit2",
+      "name": "Unit 2 - 家居",
+      "vocabulary": [
+        {"word": "apartment", "type": "n.", "meaning": "公寓"},
+        {"word": "flat", "type": "n.", "meaning": "單位/公寓"},
+        {"word": "appliance", "type": "n.", "meaning": "電器"},
+        {"word": "furniture", "type": "n.", "meaning": "傢俬"},
+        {"word": "shelf", "type": "n.", "meaning": "架子"},
+        {"word": "spacious", "type": "adj.", "meaning": "寬敞的"},
+        {"word": "durable", "type": "adj.", "meaning": "耐用的"},
+        {"word": "cosy", "type": "adj.", "meaning": "舒適溫馨的"},
+        {"word": "efficient", "type": "adj.", "meaning": "有效率的"},
+        {"word": "electricity", "type": "n.", "meaning": "電力"},
+        {"word": "renovate", "type": "v.", "meaning": "翻新"},
+        {"word": "run errands", "type": "phr. v.", "meaning": "跑腿/辦雜事"},
+        {"word": "do the laundry", "type": "phr. v.", "meaning": "洗衣服"},
+        {"word": "go grocery shopping", "type": "phr. v.", "meaning": "去買餸"},
+        {"word": "do chores", "type": "phr. v.", "meaning": "做家務"}
+      ]
+    },
+    {
+      "id": "unit3",
+      "name": "Unit 3 - 運動比賽",
+      "vocabulary": [
+        {"word": "challenge", "type": "n.", "meaning": "挑戰"},
+        {"word": "competition", "type": "n.", "meaning": "比賽"},
+        {"word": "instruction", "type": "n.", "meaning": "指示/說明"},
+        {"word": "athlete", "type": "n.", "meaning": "運動員"},
+        {"word": "participate", "type": "v.", "meaning": "參加"},
+        {"word": "compete", "type": "v.", "meaning": "競爭/比賽"},
+        {"word": "encourage", "type": "v.", "meaning": "鼓勵"},
+        {"word": "announce", "type": "v.", "meaning": "宣佈"},
+        {"word": "important", "type": "adj.", "meaning": "重要的"},
+        {"word": "famous", "type": "adj.", "meaning": "著名的"},
+        {"word": "effort", "type": "n.", "meaning": "努力"},
+        {"word": "opportunity", "type": "n.", "meaning": "機會"},
+        {"word": "suddenly", "type": "adv.", "meaning": "突然地"},
+        {"word": "probably", "type": "adv.", "meaning": "可能地"},
+        {"word": "almost", "type": "adv.", "meaning": "幾乎"},
+        {"word": "keen on", "type": "phr.", "meaning": "喜愛/熱衷於"},
+        {"word": "engineer", "type": "n.", "meaning": "工程師"},
+        {"word": "referee", "type": "n.", "meaning": "裁判"},
+        {"word": "opponent", "type": "n.", "meaning": "對手"},
+        {"word": "disappointed", "type": "adj.", "meaning": "失望的"},
+        {"word": "award ceremony", "type": "n.", "meaning": "頒獎典禮"},
+        {"word": "delightful", "type": "adj.", "meaning": "令人愉快的"},
+        {"word": "impressive", "type": "adj.", "meaning": "令人印象深刻的"},
+        {"word": "exhausted", "type": "adj.", "meaning": "筋疲力盡的"},
+        {"word": "tournament", "type": "n.", "meaning": "錦標賽"}
+      ]
+    },
+    {
+      "id": "unit4",
+      "name": "Unit 4 - 外出用餐",
+      "vocabulary": [
+        {"word": "review", "type": "n.", "meaning": "評論"},
+        {"word": "affordable", "type": "adj.", "meaning": "價格合理的"},
+        {"word": "expensive", "type": "adj.", "meaning": "昂貴的"},
+        {"word": "budget-friendly", "type": "phr.", "meaning": "經濟實惠的"},
+        {"word": "juicy", "type": "adj.", "meaning": "多汁的"},
+        {"word": "creamy", "type": "adj.", "meaning": "奶油的/滑順的"},
+        {"word": "crunchy", "type": "adj.", "meaning": "脆的"},
+        {"word": "bland", "type": "adj.", "meaning": "淡而無味的"},
+        {"word": "delicious", "type": "adj.", "meaning": "美味的"},
+        {"word": "greasy", "type": "adj.", "meaning": "油膩的"},
+        {"word": "excellent", "type": "adj.", "meaning": "極好的"},
+        {"word": "awful", "type": "adj.", "meaning": "糟糕的"},
+        {"word": "disappointing", "type": "adj.", "meaning": "令人失望的"},
+        {"word": "relaxing", "type": "adj.", "meaning": "令人放鬆的"},
+        {"word": "crowded", "type": "adj.", "meaning": "擁擠的"},
+        {"word": "attentive", "type": "adj.", "meaning": "殷勤的/專注的"},
+        {"word": "recommend", "type": "v.", "meaning": "推薦"},
+        {"word": "celebrate", "type": "v.", "meaning": "慶祝"},
+        {"word": "prepare", "type": "v.", "meaning": "準備"},
+        {"word": "order", "type": "v.", "meaning": "點餐"},
+        {"word": "waiter", "type": "n.", "meaning": "男侍應"},
+        {"word": "waitress", "type": "n.", "meaning": "女侍應"},
+        {"word": "restaurant", "type": "n.", "meaning": "餐廳"},
+        {"word": "reservation", "type": "n.", "meaning": "預訂"},
+        {"word": "ambience", "type": "n.", "meaning": "氛圍"},
+        {"word": "vibe", "type": "n.", "meaning": "氛圍/感覺"},
+        {"word": "flavour", "type": "n.", "meaning": "味道"},
+        {"word": "queue", "type": "n.", "meaning": "隊伍"},
+        {"word": "menu", "type": "n.", "meaning": "菜單"},
+        {"word": "service", "type": "n.", "meaning": "服務"},
+        {"word": "portion", "type": "n.", "meaning": "份量"},
+        {"word": "decor", "type": "n.", "meaning": "裝飾"},
+        {"word": "bill", "type": "n.", "meaning": "帳單"},
+        {"word": "beverage", "type": "n.", "meaning": "飲品"},
+        {"word": "dessert", "type": "n.", "meaning": "甜品"},
+        {"word": "cuisine", "type": "n.", "meaning": "菜式/烹飪"},
+        {"word": "quality", "type": "n.", "meaning": "質素"}
+      ]
+    }
+  ],
+  "grammar": {
+    "tenses": [
+      {
+        "type": "multiple_choice",
+        "question": "She _____ to school every day.",
+        "options": ["go", "goes", "going", "went"],
+        "answer": 1,
+        "explanation": "Present Simple - 習慣性動作用第三人稱單數加 'es'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "Look! The children _____ in the playground.",
+        "options": ["play", "are playing", "played", "have played"],
+        "answer": 1,
+        "explanation": "Present Continuous - 'Look!' 表示正在發生的動作"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "I _____ my homework already.",
+        "options": ["finish", "finished", "have finished", "am finishing"],
+        "answer": 2,
+        "explanation": "Present Perfect - 'already' 表示已完成的動作"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "They _____ a movie last night.",
+        "options": ["watch", "watched", "have watched", "watching"],
+        "answer": 1,
+        "explanation": "Past Simple - 'last night' 表示過去特定時間"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "While I _____, the phone rang.",
+        "options": ["cook", "was cooking", "cooked", "have cooked"],
+        "answer": 1,
+        "explanation": "Past Continuous - 表示過去某動作進行時被另一動作打斷"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "We _____ visit grandma tomorrow.",
+        "options": ["will", "are", "were", "have"],
+        "answer": 0,
+        "explanation": "Simple Future - 'will' 表示將來的動作"
+      }
+    ],
+    "articles": [
+      {
+        "type": "multiple_choice",
+        "question": "I ate _____ apple for breakfast.",
+        "options": ["a", "an", "the", "-"],
+        "answer": 1,
+        "explanation": "'Apple' 以元音開頭，用 'an'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "_____ sun is very hot today.",
+        "options": ["A", "An", "The", "-"],
+        "answer": 2,
+        "explanation": "世上獨一無二的事物前用 'the'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "She is _____ teacher.",
+        "options": ["a", "an", "the", "-"],
+        "answer": 0,
+        "explanation": "泛指一位老師，用 'a'"
+      }
+    ],
+    "relative_pronouns": [
+      {
+        "type": "multiple_choice",
+        "question": "This is the boy _____ won the competition.",
+        "options": ["who", "which", "where", "whose"],
+        "answer": 0,
+        "explanation": "指人用 'who'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "The book _____ I bought is interesting.",
+        "options": ["who", "which", "where", "whose"],
+        "answer": 1,
+        "explanation": "指物用 'which' 或 'that'"
+      },
+      {
+        "type": "multiple_choice",
+        "question": "This is the restaurant _____ we had dinner.",
+        "options": ["who", "which", "where", "whose"],
+        "answer": 2,
+        "explanation": "指地點用 'where'"
+      }
+    ]
+  }
+}
