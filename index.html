@@ -1057,15 +1057,8 @@
                 html += '</div>';
             } else if (question.type === 'fill_blank') {
                 html += `
-                    <div class="hint-box">
-                        <div class="hint-title">💡 提示</div>
-                        <div class="hint-text">填入適當的生字 (Hint: ${question.hint || question.answer})</div>
-                    </div>
                     <input type="text" class="fill-input" id="fill-answer" placeholder="請輸入答案 (小寫即可)..." autocomplete="off">
                 `;
-                if (question.chinese) {
-                    html += `<div class="sentence-context">📝 中文意思：${question.chinese}</div>`;
-                }
             }
 
             html += '<div id="feedback" class="feedback"></div>';
@@ -1245,7 +1238,20 @@
                 const correctAnswer = question.type === 'multiple_choice' 
                     ? question.options[question.answer] 
                     : question.answer;
-                feedbackEl.innerHTML = `❌ 錯誤！正確答案是: <strong>${correctAnswer}</strong>${question.ipa ? ' ' + question.ipa : ''}<div class="explanation">${question.explanation || ''}</div>`;
+                let wrongFeedback = `❌ 錯誤！正確答案是: <strong>${correctAnswer}</strong>${question.ipa ? ' ' + question.ipa : ''}`;
+                
+                // 填空題答錯時顯示提示同解釋
+                if (question.type === 'fill_blank') {
+                    if (question.hint || question.answer) {
+                        wrongFeedback += `<div class="hint-box" style="margin-top: 10px; background: #fff3cd;"><div class="hint-title">💡 提示</div><div class="hint-text">${question.hint || question.answer}</div></div>`;
+                    }
+                    if (question.chinese) {
+                        wrongFeedback += `<div class="sentence-context">📝 中文意思：${question.chinese}</div>`;
+                    }
+                }
+                
+                wrongFeedback += `<div class="explanation">${question.explanation || ''}</div>`;
+                feedbackEl.innerHTML = wrongFeedback;
             }
 
             document.getElementById('score').textContent = score;
