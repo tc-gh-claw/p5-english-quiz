@@ -22,7 +22,7 @@
       ]
     },
     {
-      "id": "unit3",
+      "id": "unit3", 
       "name": "Unit 3 - 運動比賽",
       "vocabulary": [
         {"word": "challenge", "ipa": "/ˈtʃælɪndʒ/", "type": "n.", "meaning": "挑戰"},
@@ -54,7 +54,7 @@
     },
     {
       "id": "unit4",
-      "name": "Unit 4 - 外出用餐",
+      "name": "Unit 4 - 外出用餐", 
       "vocabulary": [
         {"word": "review", "ipa": "/rɪˈvjuː/", "type": "n.", "meaning": "評論"},
         {"word": "affordable", "ipa": "/əˈfɔːrdəbl/", "type": "adj.", "meaning": "價格合理的"},
@@ -104,7 +104,7 @@
     },
     {
       "sentence": "The _____ in our house includes a sofa, chairs and a table.",
-      "answer": "furniture",
+      "answer": "furniture", 
       "chinese": "我們房子的傢俬包括沙發、椅子和桌子。"
     },
     {
@@ -123,8 +123,8 @@
       "chinese": "這張沙發很舒適溫馨。"
     },
     {
-      "sentence": "The athletes _____ in the sports competition last week.",
-      "answer": "competed",
+      "sentence": "The athletes took part in the sports _____ last week.",
+      "answer": "competition",
       "chinese": "運動員們上週參加了體育比賽。"
     },
     {
@@ -144,7 +144,7 @@
     },
     {
       "sentence": "Please follow the _____ carefully.",
-      "answer": "instructions",
+      "answer": "instruction",
       "chinese": "請仔細遵從指示。"
     },
     {
@@ -208,7 +208,7 @@
         "explanation": "Present Simple - 習慣性動作用第三人稱單數加 'es'"
       },
       {
-        "type": "multiple_choice",
+        "type": "multiple_choice", 
         "question": "Look! The children _____ in the playground.",
         "options": ["play", "are playing", "played", "have played"],
         "answer": 1,
