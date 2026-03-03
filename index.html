@@ -181,19 +181,19 @@ let answered = false;
 let selectedUnit = null;
 let selectedMode = null;
 
-// Generate questions for each word (3 questions per word)
+// Generate questions for each word
 function generateQuestionsForUnit(unitId, mode) {
     const unit = vocabData[unitId];
     if (!unit) return [];
     
     const questions = [];
-    const words = unit.words;
     
     if (mode === 'choice') {
-        // Multiple choice: Chinese to English
-        for (let i = 0; i < words.length; i++) {
-            const word = words[i];
-            const otherWords = words.filter((w, idx) => idx !== i);
+        // Multiple choice: Chinese to English - ALL words (productive + receptive)
+        const allWords = unit.words;
+        for (let i = 0; i < allWords.length; i++) {
+            const word = allWords[i];
+            const otherWords = allWords.filter((w, idx) => idx !== i);
             const options = [word.word];
             
             // Add 3 wrong options
@@ -221,14 +221,15 @@ function generateQuestionsForUnit(unitId, mode) {
             });
         }
     } else if (mode === 'fill') {
-        // Fill in blank questions
+        // Fill in blank questions - ONLY productive words
+        const productiveWords = unit.words.filter(w => w.category === 'productive');
         const templates = [
             { template: "The __________ is very useful.", context: "這個______很有用。" },
             { template: "I like this __________ very much.", context: "我很喜歡這個______。" },
             { template: "We need to buy a new __________.", context: "我們需要買一個新的______。" }
         ];
         
-        words.forEach((word, index) => {
+        productiveWords.forEach((word, index) => {
             const template = templates[index % templates.length];
             questions.push({
                 type: 'fill_blank',
@@ -257,13 +258,45 @@ function showQuizMode(unitOrType) {
         }
         startQuiz();
     } else if (unitOrType === 'mixed') {
-        // Mix all units
+        // Mix all units - only productive words for fill mode, all words for choice mode
         currentQuestions = [];
+        
+        // Mixed mode defaults to choice questions using all words
         ['unit2', 'unit3', 'unit4'].forEach(unit => {
-            const unitQuestions = generateQuestionsForUnit(unit, 'choice');
-            currentQuestions.push(...unitQuestions.slice(0, 5));
+            const unitWords = vocabData[unit].words;
+            const selectedWords = unitWords.slice(0, 8); // Take 8 words from each unit
+            
+            selectedWords.forEach((word, idx) => {
+                const otherWords = unitWords.filter((w, i) => i !== idx).slice(0, 5);
+                const options = [word.word];
+                
+                // Add 3 wrong options
+                for (let j = 0; j < 3 && j < otherWords.length; j++) {
+                    const randomWord = otherWords[Math.floor(Math.random() * otherWords.length)].word;
+                    if (!options.includes(randomWord)) {
+                        options.push(randomWord);
+                    }
+                }
+                
+                // Shuffle
+                for (let j = options.length - 1; j > 0; j--) {
+                    const k = Math.floor(Math.random() * (j + 1));
+                    [options[j], options[k]] = [options[k], options[j]];
+                }
+                
+                currentQuestions.push({
+                    type: 'multiple_choice',
+                    question: `"${word.meaning}" 的英文是什麼？`,
+                    word: word.word,
+                    ipa: word.ipa,
+                    options: options,
+                    answer: options.indexOf(word.word),
+                    explanation: `${word.word} ${word.ipa} (${word.type}) = ${word.meaning}`
+                });
+            });
         });
-        // Shuffle
+        
+        // Shuffle all questions
         for (let i = currentQuestions.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [currentQuestions[i], currentQuestions[j]] = [currentQuestions[j], currentQuestions[i]];
