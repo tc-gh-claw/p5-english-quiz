@@ -49,162 +49,142 @@
     }
   ],
   "fill_in_blanks": [
-    {
-      "sentence": "We live in a spacious __________ in the city centre.",
-      "answer": "apartment",
-      "chinese": "我們住在市中心一間寬敞的公寓。",
-      "unit": "unit2"
-    },
-    {
-      "sentence": "The __________ in our house includes a sofa and chairs.",
-      "answer": "furniture",
-      "chinese": "我們房子的傢俬包括沙發和椅子。",
-      "unit": "unit2"
-    },
-    {
-      "sentence": "Please put the books back on the __________.",
-      "answer": "shelf",
-      "chinese": "請把書放回架子上。",
-      "unit": "unit2"
-    },
-    {
-      "sentence": "The athletes took part in the sports __________ last week.",
-      "answer": "competition",
-      "chinese": "運動員們上週參加了體育比賽。",
-      "unit": "unit3"
-    },
-    {
-      "sentence": "It was a difficult __________, but she never gave up.",
-      "answer": "challenge",
-      "chinese": "這是個困難的挑戰，但她從不放棄。",
-      "unit": "unit3"
-    },
-    {
-      "sentence": "The coach will __________ the names of the winners.",
-      "answer": "announce",
-      "chinese": "教練將會宣佈勝利者的名字。",
-      "unit": "unit3"
-    },
-    {
-      "sentence": "My father will __________ me to try my best.",
-      "answer": "encourage",
-      "chinese": "我爸爸會鼓勵我盡力而為。",
-      "unit": "unit3"
-    },
-    {
-      "sentence": "The food at this restaurant is very __________.",
-      "answer": "delicious",
-      "chinese": "這間餐廳的食物非常美味。",
-      "unit": "unit4"
-    },
-    {
-      "sentence": "I would __________ this restaurant to my friends.",
-      "answer": "recommend",
-      "chinese": "我會向朋友推薦這間餐廳。",
-      "unit": "unit4"
-    },
-    {
-      "sentence": "We need to make a __________ for dinner tonight.",
-      "answer": "reservation",
-      "chinese": "我們需要預訂今晚的晚餐。",
-      "unit": "unit4"
-    },
-    {
-      "sentence": "The __________ at this restaurant is excellent.",
-      "answer": "service",
-      "chinese": "這間餐廳的服務非常好。",
-      "unit": "unit4"
-    },
-    {
-      "sentence": "Italian __________ is famous for pasta and pizza.",
-      "answer": "cuisine",
-      "chinese": "意大利菜式以意粉和薄餅聞名。",
-      "unit": "unit4"
-    }
+    {"sentence": "We live in a spacious __________ in the city centre.", "answer": "apartment", "chinese": "我們住在市中心一間寬敞的公寓。", "unit": "unit2"},
+    {"sentence": "The __________ has two bedrooms and a large living room.", "answer": "apartment", "chinese": "這間公寓有兩間臥室和一個大客廳。", "unit": "unit2"},
+    {"sentence": "I want to buy an __________ near the MTR station.", "answer": "apartment", "chinese": "我想買一間靠近地鐵站的公寓。", "unit": "unit2"},
+    {"sentence": "The __________ in our house includes a sofa and chairs.", "answer": "furniture", "chinese": "我們房子的傢俬包括沙發和椅子。", "unit": "unit2"},
+    {"sentence": "We need to buy some new __________ for the bedroom.", "answer": "furniture", "chinese": "我們需要為臥室買一些新傢俬。", "unit": "unit2"},
+    {"sentence": "This __________ is made of high-quality wood.", "answer": "furniture", "chinese": "這件傢俬是用優質木材製造的。", "unit": "unit2"},
+    {"sentence": "We need to buy a new kitchen __________ because the old one is broken.", "answer": "appliance", "chinese": "我們需要買一個新的廚房電器，因為舊的壞了。", "unit": "unit2"},
+    {"sentence": "This __________ uses less electricity.", "answer": "appliance", "chinese": "這個電器用電較少。", "unit": "unit2"},
+    {"sentence": "The washing machine is an essential home __________.", "answer": "appliance", "chinese": "洗衣機是一個必不可少的家用電器。", "unit": "unit2"},
+    {"sentence": "Please put the books back on the __________.", "answer": "shelf", "chinese": "請把書放回架子上。", "unit": "unit2"},
+    {"sentence": "The __________ in the kitchen is full of plates.", "answer": "shelf", "chinese": "廚房的架子上擺滿了碟子。", "unit": "unit2"},
+    {"sentence": "Can you reach the top __________?", "answer": "shelf", "chinese": "你夠得著最上面的架子嗎？", "unit": "unit2"},
+    {"sentence": "We live in a __________ house with a big garden.", "answer": "spacious", "chinese": "我們住在一間寬敞的房子，有一個大花園。", "unit": "unit2"},
+    {"sentence": "The living room is very __________ and bright.", "answer": "spacious", "chinese": "客廳非常寬敞明亮。", "unit": "unit2"},
+    {"sentence": "I love this __________ apartment.", "answer": "spacious", "chinese": "我喜歡這間寬敞的公寓。", "unit": "unit2"},
+    {"sentence": "This sofa is very __________ and comfortable.", "answer": "cosy", "chinese": "這張沙發很舒適溫馨。", "unit": "unit2"},
+    {"sentence": "The bedroom feels __________ with the warm lights.", "answer": "cosy", "chinese": "臥室因為暖燈而感覺舒適溫馨。", "unit": "unit2"},
+    {"sentence": "I like reading in this __________ corner.", "answer": "cosy", "chinese": "我喜歡在這個舒適的角落閱讀。", "unit": "unit2"},
+    {"sentence": "This washing machine is very __________.", "answer": "efficient", "chinese": "這部洗衣機非常有效率。", "unit": "unit2"},
+    {"sentence": "We need to find an __________ way to clean the house.", "answer": "efficient", "chinese": "我們需要找到一個有效率的清潔房屋方法。", "unit": "unit2"},
+    {"sentence": "An __________ appliance saves time and energy.", "answer": "efficient", "chinese": "一個有效率的電器可以節省時間和能源。", "unit": "unit2"},
+    {"sentence": "We plan to __________ the kitchen next month.", "answer": "renovate", "chinese": "我們計劃下個月翻新廚房。", "unit": "unit2"},
+    {"sentence": "They will __________ the old apartment.", "answer": "renovate", "chinese": "他們將會翻新這間舊公寓。", "unit": "unit2"},
+    {"sentence": "It costs a lot to __________ a house.", "answer": "renovate", "chinese": "翻新一間房子要花很多錢。", "unit": "unit2"},
+    {"sentence": "Don't forget to pay the __________ bill.", "answer": "electricity", "chinese": "不要忘記繳交電費。", "unit": "unit2"},
+    {"sentence": "The __________ went off during the storm.", "answer": "electricity", "chinese": "暴風雨期間停電了。", "unit": "unit2"},
+    {"sentence": "We use __________ to power our appliances.", "answer": "electricity", "chinese": "我們用電力來運作我們的電器。", "unit": "unit2"},
+    {"sentence": "Learning English is a difficult __________.", "answer": "challenge", "chinese": "學習英語是一個困難的挑戰。", "unit": "unit3"},
+    {"sentence": "It was a difficult __________, but she never gave up.", "answer": "challenge", "chinese": "這是個困難的挑戰，但她從不放棄。", "unit": "unit3"},
+    {"sentence": "Are you ready for this __________?", "answer": "challenge", "chinese": "你準備好迎接這個挑戰了嗎？", "unit": "unit3"},
+    {"sentence": "The athletes took part in the sports __________ last week.", "answer": "competition", "chinese": "運動員們上週參加了體育比賽。", "unit": "unit3"},
+    {"sentence": "I won first place in the __________.", "answer": "competition", "chinese": "我在比賽中贏得了第一名。", "unit": "unit3"},
+    {"sentence": "The __________ was very exciting.", "answer": "competition", "chinese": "這場比賽非常刺激。", "unit": "unit3"},
+    {"sentence": "The __________ trains hard every day.", "answer": "athlete", "chinese": "這位運動員每天刻苦訓練。", "unit": "unit3"},
+    {"sentence": "She is a famous __________.", "answer": "athlete", "chinese": "她是一位著名的運動員。", "unit": "unit3"},
+    {"sentence": "Every __________ wants to win the gold medal.", "answer": "athlete", "chinese": "每位運動員都想贏得金牌。", "unit": "unit3"},
+    {"sentence": "Over 100 students will __________ in the race.", "answer": "participate", "chinese": "超過100名學生將會參加這場賽跑。", "unit": "unit3"},
+    {"sentence": "Everyone can __________ in this event.", "answer": "participate", "chinese": "每個人都可以參加這個活動。", "unit": "unit3"},
+    {"sentence": "I want to __________ in the singing contest.", "answer": "participate", "chinese": "我想參加歌唱比賽。", "unit": "unit3"},
+    {"sentence": "Ten teams will __________ for the trophy.", "answer": "compete", "chinese": "十隊將會競爭這個獎盃。", "unit": "unit3"},
+    {"sentence": "The two runners __________ fiercely.", "answer": "compete", "chinese": "兩位跑手激烈地競爭。", "unit": "unit3"},
+    {"sentence": "It's good to __________ with friends.", "answer": "compete", "chinese": "和朋友競爭是好事。", "unit": "unit3"},
+    {"sentence": "My parents always __________ me to do my best.", "answer": "encourage", "chinese": "我父母總是鼓勵我盡力而為。", "unit": "unit3"},
+    {"sentence": "Teachers should __________ their students.", "answer": "encourage", "chinese": "老師應該鼓勵他們的學生。", "unit": "unit3"},
+    {"sentence": "Your words __________ me a lot.", "answer": "encourage", "chinese": "你的話很鼓勵我。", "unit": "unit3"},
+    {"sentence": "The coach will __________ the names of the winners.", "answer": "announce", "chinese": "教練將會宣佈勝利者的名字。", "unit": "unit3"},
+    {"sentence": "They will __________ the results tomorrow.", "answer": "announce", "chinese": "他們明天會宣佈結果。", "unit": "unit3"},
+    {"sentence": "Please wait for the teacher to __________.", "answer": "announce", "chinese": "請等待老師宣佈。", "unit": "unit3"},
+    {"sentence": "My __________ in the final was very strong.", "answer": "opponent", "chinese": "我在決賽中的對手非常強。", "unit": "unit3"},
+    {"sentence": "I respect my __________.", "answer": "opponent", "chinese": "我尊重我的對手。", "unit": "unit3"},
+    {"sentence": "The __________ scored five goals.", "answer": "opponent", "chinese": "對手射入了五球。", "unit": "unit3"},
+    {"sentence": "The athletes were __________ after the marathon.", "answer": "exhausted", "chinese": "運動員們在馬拉松後筋疲力盡。", "unit": "unit3"},
+    {"sentence": "I feel __________ after swimming.", "answer": "exhausted", "chinese": "游泳後我感到筋疲力盡。", "unit": "unit3"},
+    {"sentence": "Running 10km made me __________.", "answer": "exhausted", "chinese": "跑10公里令我筋疲力盡。", "unit": "unit3"},
+    {"sentence": "The __________ starts next Monday.", "answer": "tournament", "chinese": "錦標賽下星期一開始。", "unit": "unit3"},
+    {"sentence": "Over 50 teams joined the __________.", "answer": "tournament", "chinese": "超過50隊參加了這個錦標賽。", "unit": "unit3"},
+    {"sentence": "The __________ final will be held in the stadium.", "answer": "tournament", "chinese": "錦標賽決賽將在體育館舉行。", "unit": "unit3"},
+    {"sentence": "The pizza was very __________.", "answer": "delicious", "chinese": "這個薄餅非常美味。", "unit": "unit4"},
+    {"sentence": "My mother cooks __________ food.", "answer": "delicious", "chinese": "我媽媽煮美味的食物。", "unit": "unit4"},
+    {"sentence": "This cake tastes __________.", "answer": "delicious", "chinese": "這個蛋糕嚐起來很美味。", "unit": "unit4"},
+    {"sentence": "I would __________ this restaurant to my friends.", "answer": "recommend", "chinese": "我會向朋友推薦這間餐廳。", "unit": "unit4"},
+    {"sentence": "Can you __________ a good movie?", "answer": "recommend", "chinese": "你可以推薦一部好電影嗎？", "unit": "unit4"},
+    {"sentence": "The waiter __________ the special dish.", "answer": "recommend", "chinese": "侍應推薦了特色菜。", "unit": "unit4"},
+    {"sentence": "We need to make a __________ for dinner tonight.", "answer": "reservation", "chinese": "我們需要預訂今晚的晚餐。", "unit": "unit4"},
+    {"sentence": "I called to make a __________ at 7pm.", "answer": "reservation", "chinese": "我打電話預訂晚上7點。", "unit": "unit4"},
+    {"sentence": "The __________ was confirmed by email.", "answer": "reservation", "chinese": "預訂已通過電郵確認。", "unit": "unit4"},
+    {"sentence": "The __________ at this restaurant is excellent.", "answer": "service", "chinese": "這間餐廳的服務非常好。", "unit": "unit4"},
+    {"sentence": "Good __________ makes customers happy.", "answer": "service", "chinese": "良好的服務令顧客開心。", "unit": "unit4"},
+    {"sentence": "I was impressed by the __________.", "answer": "service", "chinese": "我對服務印象深刻。", "unit": "unit4"},
+    {"sentence": "The __________ of the restaurant is romantic.", "answer": "ambience", "chinese": "這間餐廳的氛圍很浪漫。", "unit": "unit4"},
+    {"sentence": "I love the __________ here with soft music.", "answer": "ambience", "chinese": "我喜歡這裡伴隨輕柔音樂的氛圍。", "unit": "unit4"},
+    {"sentence": "The __________ makes dining enjoyable.", "answer": "ambience", "chinese": "氛圍令用餐變得愉快。", "unit": "unit4"},
+    {"sentence": "Italian __________ is famous for pasta.", "answer": "cuisine", "chinese": "意大利菜式以意粉聞名。", "unit": "unit4"},
+    {"sentence": "I love trying different __________.", "answer": "cuisine", "chinese": "我喜歡嘗試不同的菜式。", "unit": "unit4"},
+    {"sentence": "French __________ is known for its desserts.", "answer": "cuisine", "chinese": "法式菜式以其甜品聞名。", "unit": "unit4"},
+    {"sentence": "The __________ brought us the menu.", "answer": "waiter", "chinese": "男侍應給我們帶來了菜單。", "unit": "unit4"},
+    {"sentence": "Ask the __________ for more water.", "answer": "waiter", "chinese": "請男侍應添水。", "unit": "unit4"},
+    {"sentence": "Our __________ was very polite.", "answer": "waiter", "chinese": "我們的男侍應非常有禮貌。", "unit": "unit4"},
+    {"sentence": "Please look at the __________ before ordering.", "answer": "menu", "chinese": "點餐前請先看菜單。", "unit": "unit4"},
+    {"sentence": "The __________ has many choices.", "answer": "menu", "chinese": "這份菜單有很多選擇。", "unit": "unit4"},
+    {"sentence": "I cannot decide from the __________.", "answer": "menu", "chinese": "我看著菜單無法決定。", "unit": "unit4"},
+    {"sentence": "This restaurant is too __________ for me.", "answer": "expensive", "chinese": "這間餐廳對我來說太昂貴了。", "unit": "unit4"},
+    {"sentence": "The steak is very __________.", "answer": "expensive", "chinese": "這塊牛排非常昂貴。", "unit": "unit4"},
+    {"sentence": "I cannot afford this __________ meal.", "answer": "expensive", "chinese": "我負擔不起這頓昂貴的飯。", "unit": "unit4"},
+    {"sentence": "The restaurant was very __________ on Friday night.", "answer": "crowded", "chinese": "這間餐廳星期五晚上很擁擠。", "unit": "unit4"},
+    {"sentence": "The bus is always __________ in the morning.", "answer": "crowded", "chinese": "巴士早上總是很擁擠。", "unit": "unit4"},
+    {"sentence": "I don't like __________ places.", "answer": "crowded", "chinese": "我不喜歡擁擠的地方。", "unit": "unit4"}
   ],
-  "grammar": {
-    "tenses": [
-      {
-        "type": "multiple_choice",
-        "question": "She __________ to school every day.",
-        "options": ["go", "goes", "going", "went"],
-        "answer": 1,
-        "explanation": "Present Simple - 習慣性動作用第三人稱單數加 'es'"
-      },
-      {
-        "type": "multiple_choice",
-        "question": "Look! The children __________ in the playground.",
-        "options": ["play", "are playing", "played", "have played"],
-        "answer": 1,
-        "explanation": "Present Continuous - 'Look!' 表示正在發生的動作"
-      },
-      {
-        "type": "multiple_choice",
-        "question": "I __________ my homework already.",
-        "options": ["finish", "finished", "have finished", "am finishing"],
-        "answer": 2,
-        "explanation": "Present Perfect - 'already' 表示已完成的動作"
-      },
-      {
-        "type": "multiple_choice",
-        "question": "They __________ a movie last night.",
-        "options": ["watch", "watched", "have watched", "watching"],
-        "answer": 1,
-        "explanation": "Past Simple - 'last night' 表示過去特定時間"
-      },
-      {
-        "type": "multiple_choice",
-        "question": "We __________ visit grandma tomorrow.",
-        "options": ["will", "are", "were", "have"],
-        "answer": 0,
-        "explanation": "Simple Future - 'will' 表示將來的動作"
-      }
-    ],
-    "articles": [
-      {
-        "type": "multiple_choice",
-        "question": "I ate __________ apple for breakfast.",
-        "options": ["a", "an", "the", "-"],
-        "answer": 1,
-        "explanation": "'Apple' 以元音開頭，用 'an'"
-      },
-      {
-        "type": "multiple_choice",
-        "question": "__________ sun is very hot today.",
-        "options": ["A", "An", "The", "-"],
-        "answer": 2,
-        "explanation": "世上獨一無二的事物前用 'the'"
-      },
-      {
-        "type": "multiple_choice",
-        "question": "She is __________ teacher.",
-        "options": ["a", "an", "the", "-"],
-        "answer": 0,
-        "explanation": "泛指一位老師，用 'a'"
-      }
-    ],
-    "relative_pronouns": [
-      {
-        "type": "multiple_choice",
-        "question": "This is the boy __________ won the competition.",
-        "options": ["who", "which", "where", "whose"],
-        "answer": 0,
-        "explanation": "指人用 'who'"
-      },
-      {
-        "type": "multiple_choice",
-        "question": "The book __________ I bought is interesting.",
-        "options": ["who", "which", "where", "whose"],
-        "answer": 1,
-        "explanation": "指物用 'which' 或 'that'"
-      },
-      {
-        "type": "multiple_choice",
-        "question": "This is the restaurant __________ we had dinner.",
-        "options": ["who", "which", "where", "whose"],
-        "answer": 2,
-        "explanation": "指地點用 'where'"
-      }
-    ]
-  }
+  "grammar": [
+    {"type": "multiple_choice", "question": "She __________ to school every day.", "options": ["go", "goes", "going", "went"], "answer": 1, "explanation": "Present Simple - 第三人稱單數用 'goes'"},
+    {"type": "multiple_choice", "question": "Look! The children __________ in the playground.", "options": ["play", "are playing", "played", "have played"], "answer": 1, "explanation": "Present Continuous - 'Look!' 表示正在發生"},
+    {"type": "multiple_choice", "question": "I __________ my homework already.", "options": ["finish", "finished", "have finished", "am finishing"], "answer": 2, "explanation": "Present Perfect - 'already' 表示已完成"},
+    {"type": "multiple_choice", "question": "They __________ a movie last night.", "options": ["watch", "watched", "have watched", "watching"], "answer": 1, "explanation": "Past Simple - 'last night' 是過去時間"},
+    {"type": "multiple_choice", "question": "While I __________, the phone rang.", "options": ["cook", "was cooking", "cooked", "have cooked"], "answer": 1, "explanation": "Past Continuous - 過去進行時被動作打斷"},
+    {"type": "multiple_choice", "question": "We __________ visit grandma tomorrow.", "options": ["will", "are", "were", "have"], "answer": 0, "explanation": "Future Simple - 'will' 表示將來"},
+    {"type": "multiple_choice", "question": "I ate __________ apple for breakfast.", "options": ["a", "an", "the", "-"], "answer": 1, "explanation": "'Apple' 以元音開頭，用 'an'"},
+    {"type": "multiple_choice", "question": "__________ sun is very hot today.", "options": ["A", "An", "The", "-"], "answer": 2, "explanation": "獨一無二的事物前用 'the'"},
+    {"type": "multiple_choice", "question": "She is __________ teacher.", "options": ["a", "an", "the", "-"], "answer": 0, "explanation": "泛指用 'a'"},
+    {"type": "multiple_choice", "question": "This is the boy __________ won the competition.", "options": ["who", "which", "where", "whose"], "answer": 0, "explanation": "指人用 'who'"},
+    {"type": "multiple_choice", "question": "The book __________ I bought is interesting.", "options": ["who", "which", "where", "whose"], "answer": 1, "explanation": "指物用 'which'"},
+    {"type": "multiple_choice", "question": "This is the restaurant __________ we had dinner.", "options": ["who", "which", "where", "whose"], "answer": 2, "explanation": "指地點用 'where'"},
+    {"type": "multiple_choice", "question": "He __________ to the gym three times a week.", "options": ["go", "goes", "going", "went"], "answer": 1, "explanation": "Present Simple - 習慣性動作"},
+    {"type": "multiple_choice", "question": "Listen! Someone __________ at the door.", "options": ["knock", "is knocking", "knocked", "has knocked"], "answer": 1, "explanation": "Present Continuous - 'Listen!' 表示正在發生"},
+    {"type": "multiple_choice", "question": "They __________ in Hong Kong since 2010.", "options": ["live", "lived", "have lived", "are living"], "answer": 2, "explanation": "Present Perfect - 'since' 表示從過去到現在"},
+    {"type": "multiple_choice", "question": "I __________ my keys yesterday.", "options": ["lose", "lost", "have lost", "am losing"], "answer": 1, "explanation": "Past Simple - 'yesterday' 是過去時間"},
+    {"type": "multiple_choice", "question": "When I arrived, they __________ dinner.", "options": ["have", "were having", "had", "are having"], "answer": 1, "explanation": "Past Continuous - 過去某時正在進行"},
+    {"type": "multiple_choice", "question": "I think it __________ rain tomorrow.", "options": ["will", "is", "was", "would"], "answer": 0, "explanation": "Future Simple - 預測將來"},
+    {"type": "multiple_choice", "question": "She bought __________ umbrella.", "options": ["a", "an", "the", "-"], "answer": 1, "explanation": "'Umbrella' 以元音開頭，用 'an'"},
+    {"type": "multiple_choice", "question": "__________ Pacific Ocean is the largest ocean.", "options": ["A", "An", "The", "-"], "answer": 2, "explanation": "專有名詞前用 'the'"},
+    {"type": "multiple_choice", "question": "He is __________ honest man.", "options": ["a", "an", "the", "-"], "answer": 1, "explanation": "'Honest' 以元音音素開頭，用 'an'"},
+    {"type": "multiple_choice", "question": "The girl __________ bike was stolen is crying.", "options": ["who", "which", "where", "whose"], "answer": 3, "explanation": "表示所有格用 'whose'"},
+    {"type": "multiple_choice", "question": "This is the school __________ I studied.", "options": ["who", "which", "where", "whose"], "answer": 2, "explanation": "指地點用 'where'"},
+    {"type": "multiple_choice", "question": "The man __________ lives next door is friendly.", "options": ["who", "which", "where", "whose"], "answer": 0, "explanation": "指人用 'who'"},
+    {"type": "multiple_choice", "question": "My brother __________ in Canada.", "options": ["live", "lives", "living", "lived"], "answer": 1, "explanation": "Present Simple - 第三人稱單數"},
+    {"type": "multiple_choice", "question": "Be quiet! The baby __________.", "options": ["sleep", "is sleeping", "slept", "has slept"], "answer": 1, "explanation": "Present Continuous - 'Be quiet!' 表示正在發生"},
+    {"type": "multiple_choice", "question": "Have you __________ lunch yet?", "options": ["have", "had", "having", "has"], "answer": 1, "explanation": "Present Perfect - 'yet' 表示疑問"},
+    {"type": "multiple_choice", "question": "She __________ to Paris two years ago.", "options": ["go", "goes", "went", "has gone"], "answer": 2, "explanation": "Past Simple - 'two years ago' 是過去時間"},
+    {"type": "multiple_choice", "question": "I was reading when he __________.", "options": ["arrive", "arrives", "arrived", "arriving"], "answer": 2, "explanation": "Past Simple - 打斷過去進行時的動作"},
+    {"type": "multiple_choice", "question": "We __________ have a party next Saturday.", "options": ["will", "are", "were", "have"], "answer": 0, "explanation": "Future Simple - 'next Saturday' 是將來"},
+    {"type": "multiple_choice", "question": "She is __________ university student.", "options": ["a", "an", "the", "-"], "answer": 0, "explanation": "泛指用 'a'"},
+    {"type": "multiple_choice", "question": "__________ Earth moves around the sun.", "options": ["A", "An", "The", "-"], "answer": 2, "explanation": "獨一無二的事物前用 'the'"},
+    {"type": "multiple_choice", "question": "I saw __________ elephant at the zoo.", "options": ["a", "an", "the", "-"], "answer": 1, "explanation": "'Elephant' 以元音開頭，用 'an'"},
+    {"type": "multiple_choice", "question": "The cake __________ she made was delicious.", "options": ["who", "which", "where", "whose"], "answer": 1, "explanation": "指物用 'which'"},
+    {"type": "multiple_choice", "question": "The house __________ windows are red is mine.", "options": ["who", "which", "where", "whose"], "answer": 3, "explanation": "表示所有格用 'whose'"},
+    {"type": "multiple_choice", "question": "The park __________ we met is beautiful.", "options": ["who", "which", "where", "whose"], "answer": 2, "explanation": "指地點用 'where'"},
+    {"type": "multiple_choice", "question": "My dog __________ in the garden every morning.", "options": ["play", "plays", "playing", "played"], "answer": 1, "explanation": "Present Simple - 習慣性動作"},
+    {"type": "multiple_choice", "question": "Watch out! A car __________ towards us!", "options": ["come", "is coming", "came", "has come"], "answer": 1, "explanation": "Present Continuous - 'Watch out!' 表示正在發生"},
+    {"type": "multiple_choice", "question": "I have never __________ to Japan.", "options": ["be", "been", "being", "was"], "answer": 1, "explanation": "Present Perfect - 'have been' 表示經驗"},
+    {"type": "multiple_choice", "question": "They __________ basketball when I called.", "options": ["play", "were playing", "played", "have played"], "answer": 1, "explanation": "Past Continuous - 過去某時正在進行"},
+    {"type": "multiple_choice", "question": "Last week, I __________ a new phone.", "options": ["buy", "buys", "bought", "have bought"], "answer": 2, "explanation": "Past Simple - 'last week' 是過去時間"},
+    {"type": "multiple_choice", "question": "I promise I __________ be late.", "options": ["will not", "do not", "did not", "would not"], "answer": 0, "explanation": "Future Simple - 承諾將來"},
+    {"type": "multiple_choice", "question": "This is __________ useful book.", "options": ["a", "an", "the", "-"], "answer": 0, "explanation": "'Useful' 以輔音音素開頭，用 'a'"},
+    {"type": "multiple_choice", "question": "__________ Eiffel Tower is in France.", "options": ["A", "An", "The", "-"], "answer": 2, "explanation": "著名建築物前用 'the'"},
+    {"type": "multiple_choice", "question": "He wants to be __________ astronaut.", "options": ["a", "an", "the", "-"], "answer": 1, "explanation": "'Astronaut' 以元音開頭，用 'an'"},
+    {"type": "multiple_choice", "question": "The woman __________ you met is my aunt.", "options": ["who", "which", "where", "whose"], "answer": 0, "explanation": "指人用 'who'"},
+    {"type": "multiple_choice", "question": "The room __________ door is open is empty.", "options": ["who", "which", "where", "whose"], "answer": 3, "explanation": "表示所有格用 'whose'"},
+    {"type": "multiple_choice", "question": "The city __________ I was born is small.", "options": ["who", "which", "where", "whose"], "answer": 2, "explanation": "指地點用 'where'"}
+  ]
 }
