@@ -1,3 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>小五英文測驗 - 2025年第二學期考試</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=ktuS1y2e"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Nunito', -apple-system, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 15px; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; color: white; margin-bottom: 20px; padding: 15px; }
+        .header h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; }
+        .header .subtitle { font-size: 0.95rem; opacity: 0.9; }
+        .shrimp-icon { font-size: 2.5rem; margin-bottom: 5px; }
+        .card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        .card-title { font-size: 1.2rem; font-weight: 700; color: #5a67d8; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .menu-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 12px; padding: 15px 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 5px; min-height: 90px; }
+        .menu-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(102,126,234,0.4); }
+        .menu-btn.secondary { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .menu-btn.success { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .menu-btn.warning { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .menu-btn .icon { font-size: 1.5rem; }
+        .section { display: none; }
+        .section.active { display: block; }
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+        .quiz-progress { font-size: 0.9rem; color: #718096; font-weight: 600; }
+        .quiz-score { font-size: 1rem; font-weight: 700; color: #5a67d8; }
+        .progress-bar { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; margin-bottom: 15px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); border-radius: 4px; transition: width 0.3s ease; }
+        .question-card { background: #f7fafc; border-radius: 12px; padding: 18px; margin-bottom: 15px; }
+        .question-type { font-size: 0.75rem; color: #718096; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .question-text { font-size: 1.15rem; font-weight: 700; color: #2d3748; line-height: 1.5; }
+        .options-grid { display: grid; gap: 10px; }
+        .option-btn { background: white; border: 3px solid #e2e8f0; border-radius: 12px; padding: 15px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: left; display: flex; align-items: center; gap: 12px; }
+        .option-btn:hover { border-color: #667eea; background: #f7fafc; }
+        .option-btn.selected { border-color: #667eea; background: #e0e7ff; }
+        .option-btn.correct { border-color: #48bb78; background: #c6f6d5; }
+        .option-btn.wrong { border-color: #f56565; background: #fed7d7; }
+        .option-letter { width: 32px; height: 32px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .option-btn.selected .option-letter { background: #667eea; color: white; }
+        .option-btn.correct .option-letter { background: #48bb78; color: white; }
+        .option-btn.wrong .option-letter { background: #f56565; color: white; }
+        .fill-input { width: 100%; padding: 15px; font-size: 1.1rem; border: 3px solid #e2e8f0; border-radius: 12px; font-family: inherit; }
+        .fill-input:focus { outline: none; border-color: #667eea; }
+        .action-btns { display: flex; gap: 10px; margin-top: 15px; }
+        .btn { flex: 1; padding: 14px 20px; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .btn-secondary { background: #e2e8f0; color: #4a5568; }
+        .btn-success { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); color: white; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+        .feedback { padding: 15px; border-radius: 10px; margin-top: 15px; font-size: 1rem; font-weight: 600; display: none; }
+        .feedback.correct { display: block; background: #c6f6d5; color: #22543d; }
+        .feedback.wrong { display: block; background: #fed7d7; color: #742a2a; }
+        .feedback .explanation { margin-top: 8px; font-size: 0.9rem; font-weight: 400; }
+        .result-summary { text-align: center; padding: 30px 15px; }
+        .result-score { font-size: 3.5rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .result-message { font-size: 1.1rem; color: #4a5568; margin: 15px 0; }
+        .result-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .stat-box { background: #f7fafc; padding: 15px; border-radius: 10px; }
+        .stat-number { font-size: 1.8rem; font-weight: 700; color: #5a67d8; }
+        .stat-label { font-size: 0.85rem; color: #718096; }
+        .vocab-list { max-height: 450px; overflow-y: auto; }
+        .vocab-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #e2e8f0; }
+        .vocab-item:hover { background: #f7fafc; }
+        .vocab-word { font-size: 1.1rem; font-weight: 700; color: #2d3748; }
+        .vocab-ipa { font-size: 0.85rem; color: #667eea; }
+        .vocab-meaning { color: #4a5568; font-size: 0.95rem; text-align: right; }
+        .vocab-btn { padding: 6px 12px; border: none; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; background: #e0e7ff; color: #5a67d8; }
+        .vocab-btn:hover { background: #667eea; color: white; }
+        .mode-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
+        .mode-btn { background: #f7fafc; border: 3px solid #e2e8f0; border-radius: 12px; padding: 15px; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-align: center; }
+        .mode-btn:hover { border-color: #667eea; background: #e0e7ff; }
+        .mode-btn.active { border-color: #667eea; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .back-btn { width: 100%; margin-top: 10px; }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .action-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="shrimp-icon">🦐</div>
+            <h1>小五英文測驗</h1>
+            <p class="subtitle">2025年第二學期考試溫習</p>
+        </div>
+
+        <div id="menu-section" class="section active">
+            <div class="card">
+                <h2 class="card-title">📚 選擇溫習單元</h2>
+                <div class="menu-grid">
+                    <button class="menu-btn" onclick="showQuizMode('unit2')">
+                        <span class="icon">🏠</span>
+                        <span>Unit 2<br>家居 (14詞)</span>
+                    </button>
+                    <button class="menu-btn" onclick="showQuizMode('unit3')">
+                        <span class="icon">🏆</span>
+                        <span>Unit 3<br>運動比賽 (25詞)</span>
+                    </button>
+                    <button class="menu-btn" onclick="showQuizMode('unit4')">
+                        <span class="icon">🍽️</span>
+                        <span>Unit 4<br>外出用餐 (36詞)</span>
+                    </button>
+                    <button class="menu-btn secondary" onclick="showQuizMode('grammar')">
+                        <span class="icon">✏️</span>
+                        <span>文法練習<br>(50題)</span>
+                    </button>
+                    <button class="menu-btn warning" onclick="showQuizMode('mixed')">
+                        <span class="icon">🎲</span>
+                        <span>混合測驗<br>(全部單元)</span>
+                    </button>
+                    <button class="menu-btn success" onclick="showVocabulary()">
+                        <span class="icon">📖</span>
+                        <span>溫習生字<br>+讀音</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="quiz-mode-section" class="section">
+            <div class="card">
+                <h2 class="card-title">🎯 選擇題目類型</h2>
+                <div class="mode-grid">
+                    <button class="mode-btn" onclick="selectMode('choice')">
+                        <div style="font-size: 1.8rem; margin-bottom: 5px;">🔘</div>
+                        <div>選擇題</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 3px;">全部生字</div>
+                    </button>
+                    <button class="mode-btn" onclick="selectMode('fill')">
+                        <div style="font-size: 1.8rem; margin-bottom: 5px;">✍️</div>
+                        <div>填空題</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 3px;">僅限Productive</div>
+                    </button>
+                </div>
+                <button class="btn btn-secondary back-btn" onclick="backToMenu()">返回選單</button>
+            </div>
+        </div>
+
+        <div id="quiz-section" class="section">
+            <div class="card">
+                <div class="quiz-header">
+                    <span class="quiz-progress">題目 <span id="current-q">1</span> / <span id="total-q">10</span></span>
+                    <span class="quiz-score">得分: <span id="score">0</span></span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-bar" style="width: 10%"></div>
+                </div>
+                <div id="question-container"></div>
+                <div class="action-btns">
+                    <button class="btn btn-secondary" onclick="backToMenu()">返回選單</button>
+                    <button class="btn btn-primary" id="check-btn" onclick="checkAnswer()">檢查答案</button>
+                    <button class="btn btn-success" id="next-btn" onclick="nextQuestion()" style="display:none">下一題</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-section" class="section">
+            <div class="card">
+                <div class="result-summary">
+                    <div class="result-score"><span id="final-score">0</span>%</div>
+                    <p class="result-message" id="result-message">做得好！</p>
+                    <div class="result-stats">
+                        <div class="stat-box">
+                            <div class="stat-number" id="correct-count">0</div>
+                            <div class="stat-label">答對</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="wrong-count">0</div>
+                            <div class="stat-label">答錯</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="total-count">0</div>
+                            <div class="stat-label">總題數</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="backToMenu()" style="width: 100%;">返回主選單</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="vocab-section" class="section">
+            <div class="card">
+                <h2 class="card-title">📖 溫習生字 + 讀音</h2>
+                <div class="menu-grid" style="margin-bottom: 15px;">
+                    <button class="menu-btn" onclick="showUnitVocab('unit2')">Unit 2</button>
+                    <button class="menu-btn" onclick="showUnitVocab('unit3')">Unit 3</button>
+                    <button class="menu-btn" onclick="showUnitVocab('unit4')">Unit 4</button>
+                </div>
+                <div id="vocab-list-container" class="vocab-list"></div>
+                <button class="btn btn-secondary back-btn" onclick="backToMenu()">返回主選單</button>
+            </div>
+        </div>
+    </div>
+
+<script>
 // Complete Vocabulary Data based on 2025 P5 Second Term Exam Syllabus
 const vocabData = {
     unit2: {
@@ -95,77 +295,50 @@ const vocabData = {
 
 // Grammar Questions (50 questions)
 const grammarQuestions = [
-    // Present Simple
     {type: "multiple_choice", question: "She __________ to school every day.", options: ["go", "goes", "going", "went"], answer: 1, explanation: "Present Simple - 第三人稱單數用 'goes'"},
     {type: "multiple_choice", question: "He __________ to the gym three times a week.", options: ["go", "goes", "going", "went"], answer: 1, explanation: "Present Simple - 習慣性動作"},
     {type: "multiple_choice", question: "My brother __________ in Canada.", options: ["live", "lives", "living", "lived"], answer: 1, explanation: "Present Simple - 第三人稱單數"},
     {type: "multiple_choice", question: "My dog __________ in the garden every morning.", options: ["play", "plays", "playing", "played"], answer: 1, explanation: "Present Simple - 習慣性動作"},
-    
-    // Present Continuous
     {type: "multiple_choice", question: "Look! The children __________ in the playground.", options: ["play", "are playing", "played", "have played"], answer: 1, explanation: "Present Continuous - 'Look!' 表示正在發生"},
     {type: "multiple_choice", question: "Listen! Someone __________ at the door.", options: ["knock", "is knocking", "knocked", "has knocked"], answer: 1, explanation: "Present Continuous - 'Listen!' 表示正在發生"},
     {type: "multiple_choice", question: "Be quiet! The baby __________.", options: ["sleep", "is sleeping", "slept", "has slept"], answer: 1, explanation: "Present Continuous - 'Be quiet!' 表示正在發生"},
     {type: "multiple_choice", question: "Watch out! A car __________ towards us!", options: ["come", "is coming", "came", "has come"], answer: 1, explanation: "Present Continuous - 'Watch out!' 表示正在發生"},
-    
-    // Present Perfect
     {type: "multiple_choice", question: "I __________ my homework already.", options: ["finish", "finished", "have finished", "am finishing"], answer: 2, explanation: "Present Perfect - 'already' 表示已完成"},
     {type: "multiple_choice", question: "They __________ in Hong Kong since 2010.", options: ["live", "lived", "have lived", "are living"], answer: 2, explanation: "Present Perfect - 'since' 表示從過去到現在"},
     {type: "multiple_choice", question: "Have you __________ lunch yet?", options: ["have", "had", "having", "has"], answer: 1, explanation: "Present Perfect - 'yet' 表示疑問"},
     {type: "multiple_choice", question: "I have never __________ to Japan.", options: ["be", "been", "being", "was"], answer: 1, explanation: "Present Perfect - 'have been' 表示經驗"},
-    
-    // Past Simple
     {type: "multiple_choice", question: "They __________ a movie last night.", options: ["watch", "watched", "have watched", "watching"], answer: 1, explanation: "Past Simple - 'last night' 是過去時間"},
     {type: "multiple_choice", question: "I __________ my keys yesterday.", options: ["lose", "lost", "have lost", "am losing"], answer: 1, explanation: "Past Simple - 'yesterday' 是過去時間"},
     {type: "multiple_choice", question: "She __________ to Paris two years ago.", options: ["go", "goes", "went", "has gone"], answer: 2, explanation: "Past Simple - 'two years ago' 是過去時間"},
     {type: "multiple_choice", question: "Last week, I __________ a new phone.", options: ["buy", "buys", "bought", "have bought"], answer: 2, explanation: "Past Simple - 'last week' 是過去時間"},
-    {type: "multiple_choice", question: "When I arrived, he __________ the door.", options: ["open", "opens", "opened", "opening"], answer: 2, explanation: "Past Simple - 過去動作"},
-    
-    // Past Continuous
     {type: "multiple_choice", question: "While I __________, the phone rang.", options: ["cook", "was cooking", "cooked", "have cooked"], answer: 1, explanation: "Past Continuous - 過去進行時被動作打斷"},
     {type: "multiple_choice", question: "When I arrived, they __________ dinner.", options: ["have", "were having", "had", "are having"], answer: 1, explanation: "Past Continuous - 過去某時正在進行"},
-    {type: "multiple_choice", question: "I was reading when he __________.", options: ["arrive", "arrives", "arrived", "arriving"], answer: 2, explanation: "Past Simple - 打斷過去進行時的動作"},
     {type: "multiple_choice", question: "They __________ basketball when I called.", options: ["play", "were playing", "played", "have played"], answer: 1, explanation: "Past Continuous - 過去某時正在進行"},
-    
-    // Future Simple
     {type: "multiple_choice", question: "We __________ visit grandma tomorrow.", options: ["will", "are", "were", "have"], answer: 0, explanation: "Future Simple - 'will' 表示將來"},
     {type: "multiple_choice", question: "I think it __________ rain tomorrow.", options: ["will", "is", "was", "would"], answer: 0, explanation: "Future Simple - 預測將來"},
     {type: "multiple_choice", question: "We __________ have a party next Saturday.", options: ["will", "are", "were", "have"], answer: 0, explanation: "Future Simple - 'next Saturday' 是將來"},
     {type: "multiple_choice", question: "I promise I __________ be late.", options: ["will not", "do not", "did not", "would not"], answer: 0, explanation: "Future Simple - 承諾將來"},
-    
-    // Articles - a/an
     {type: "multiple_choice", question: "I ate __________ apple for breakfast.", options: ["a", "an", "the", "-"], answer: 1, explanation: "'Apple' 以元音開頭，用 'an'"},
     {type: "multiple_choice", question: "She bought __________ umbrella.", options: ["a", "an", "the", "-"], answer: 1, explanation: "'Umbrella' 以元音開頭，用 'an'"},
     {type: "multiple_choice", question: "He is __________ honest man.", options: ["a", "an", "the", "-"], answer: 1, explanation: "'Honest' 以元音音素開頭，用 'an'"},
     {type: "multiple_choice", question: "I saw __________ elephant at the zoo.", options: ["a", "an", "the", "-"], answer: 1, explanation: "'Elephant' 以元音開頭，用 'an'"},
     {type: "multiple_choice", question: "He wants to be __________ astronaut.", options: ["a", "an", "the", "-"], answer: 1, explanation: "'Astronaut' 以元音開頭，用 'an'"},
-    
-    // Articles - a (consonant)
     {type: "multiple_choice", question: "She is __________ teacher.", options: ["a", "an", "the", "-"], answer: 0, explanation: "泛指用 'a'"},
     {type: "multiple_choice", question: "She is __________ university student.", options: ["a", "an", "the", "-"], answer: 0, explanation: "泛指用 'a'"},
     {type: "multiple_choice", question: "This is __________ useful book.", options: ["a", "an", "the", "-"], answer: 0, explanation: "'Useful' 以輔音音素開頭，用 'a'"},
-    
-    // Articles - the
     {type: "multiple_choice", question: "__________ sun is very hot today.", options: ["A", "An", "The", "-"], answer: 2, explanation: "獨一無二的事物前用 'the'"},
     {type: "multiple_choice", question: "__________ Pacific Ocean is the largest ocean.", options: ["A", "An", "The", "-"], answer: 2, explanation: "專有名詞前用 'the'"},
     {type: "multiple_choice", question: "__________ Earth moves around the sun.", options: ["A", "An", "The", "-"], answer: 2, explanation: "獨一無二的事物前用 'the'"},
     {type: "multiple_choice", question: "__________ Eiffel Tower is in France.", options: ["A", "An", "The", "-"], answer: 2, explanation: "著名建築物前用 'the'"},
-    
-    // Relative Pronouns - who
     {type: "multiple_choice", question: "This is the boy __________ won the competition.", options: ["who", "which", "where", "whose"], answer: 0, explanation: "指人用 'who'"},
     {type: "multiple_choice", question: "The man __________ lives next door is friendly.", options: ["who", "which", "where", "whose"], answer: 0, explanation: "指人用 'who'"},
     {type: "multiple_choice", question: "The woman __________ you met is my aunt.", options: ["who", "which", "where", "whose"], answer: 0, explanation: "指人用 'who'"},
-    
-    // Relative Pronouns - which
     {type: "multiple_choice", question: "The book __________ I bought is interesting.", options: ["who", "which", "where", "whose"], answer: 1, explanation: "指物用 'which'"},
     {type: "multiple_choice", question: "The cake __________ she made was delicious.", options: ["who", "which", "where", "whose"], answer: 1, explanation: "指物用 'which'"},
-    
-    // Relative Pronouns - where
     {type: "multiple_choice", question: "This is the restaurant __________ we had dinner.", options: ["who", "which", "where", "whose"], answer: 2, explanation: "指地點用 'where'"},
     {type: "multiple_choice", question: "This is the school __________ I studied.", options: ["who", "which", "where", "whose"], answer: 2, explanation: "指地點用 'where'"},
     {type: "multiple_choice", question: "The park __________ we met is beautiful.", options: ["who", "which", "where", "whose"], answer: 2, explanation: "指地點用 'where'"},
     {type: "multiple_choice", question: "The city __________ I was born is small.", options: ["who", "which", "where", "whose"], answer: 2, explanation: "指地點用 'where'"},
-    
-    // Relative Pronouns - whose
     {type: "multiple_choice", question: "The girl __________ bike was stolen is crying.", options: ["who", "which", "where", "whose"], answer: 3, explanation: "表示所有格用 'whose'"},
     {type: "multiple_choice", question: "The house __________ windows are red is mine.", options: ["who", "which", "where", "whose"], answer: 3, explanation: "表示所有格用 'whose'"},
     {type: "multiple_choice", question: "The room __________ door is open is empty.", options: ["who", "which", "where", "whose"], answer: 3, explanation: "表示所有格用 'whose'"}
@@ -251,26 +424,21 @@ function showQuizMode(unitOrType) {
     
     if (unitOrType === 'grammar') {
         currentQuestions = [...grammarQuestions];
-        // Shuffle grammar questions
         for (let i = currentQuestions.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [currentQuestions[i], currentQuestions[j]] = [currentQuestions[j], currentQuestions[i]];
         }
         startQuiz();
     } else if (unitOrType === 'mixed') {
-        // Mix all units - only productive words for fill mode, all words for choice mode
         currentQuestions = [];
-        
-        // Mixed mode defaults to choice questions using all words
         ['unit2', 'unit3', 'unit4'].forEach(unit => {
             const unitWords = vocabData[unit].words;
-            const selectedWords = unitWords.slice(0, 8); // Take 8 words from each unit
+            const selectedWords = unitWords.slice(0, 8);
             
             selectedWords.forEach((word, idx) => {
                 const otherWords = unitWords.filter((w, i) => i !== idx).slice(0, 5);
                 const options = [word.word];
                 
-                // Add 3 wrong options
                 for (let j = 0; j < 3 && j < otherWords.length; j++) {
                     const randomWord = otherWords[Math.floor(Math.random() * otherWords.length)].word;
                     if (!options.includes(randomWord)) {
@@ -278,7 +446,6 @@ function showQuizMode(unitOrType) {
                     }
                 }
                 
-                // Shuffle
                 for (let j = options.length - 1; j > 0; j--) {
                     const k = Math.floor(Math.random() * (j + 1));
                     [options[j], options[k]] = [options[k], options[j]];
@@ -296,7 +463,6 @@ function showQuizMode(unitOrType) {
             });
         });
         
-        // Shuffle all questions
         for (let i = currentQuestions.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [currentQuestions[i], currentQuestions[j]] = [currentQuestions[j], currentQuestions[i]];
@@ -313,7 +479,6 @@ function selectMode(mode) {
     selectedMode = mode;
     currentQuestions = generateQuestionsForUnit(selectedUnit, mode);
     
-    // Shuffle questions
     for (let i = currentQuestions.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [currentQuestions[i], currentQuestions[j]] = [currentQuestions[j], currentQuestions[i]];
@@ -539,7 +704,7 @@ function showUnitVocab(unitId) {
         html += `
             <div class="vocab-item">
                 <div>
-                    <div class="vocab-word">${item.word} ${badge}</span></div>
+                    <div class="vocab-word">${item.word} ${badge}</div>
                     <div class="vocab-ipa">${item.ipa} <span style="color: #718096;">${item.type}</span></div>
                 </div>
                 <div style="text-align: right;">
@@ -575,6 +740,6 @@ function backToMenu() {
     document.getElementById('results-section').classList.remove('active');
     document.getElementById('vocab-section').classList.remove('active');
 }
-    </script>
+</script>
 </body>
 </html>
