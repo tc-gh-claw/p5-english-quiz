@@ -116,7 +116,7 @@
                     </button>
                     <button class="menu-btn" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #4a5568;" onclick="startReceptiveQuiz()">
                         <span class="icon">👁️</span>
-                        <span>Receptive 生字<br>(只需辨認)</span>
+                        <span>Receptive 生字<br>(20個/只需辨認)</span>
                     </button>
                     <button class="menu-btn success" onclick="showVocabulary()">
                         <span class="icon">📖</span>
@@ -244,6 +244,7 @@ const vocabData = {
             {word: "keen on", ipa: "/kiːn ɑːn/", type: "phr.", meaning: "喜愛/熱衷於", category: "productive"},
             {word: "engineer", ipa: "/ˌendʒɪˈnɪr/", type: "n.", meaning: "工程師", category: "receptive"},
             {word: "referee", ipa: "/ˌrefəˈriː/", type: "n.", meaning: "裁判", category: "receptive"},
+            {word: "national", ipa: "/ˈnæʃnəl/", type: "adj.", meaning: "國家的", category: "receptive"},
             {word: "opponent", ipa: "/əˈpoʊnənt/", type: "n.", meaning: "對手", category: "receptive"},
             {word: "disappointed", ipa: "/ˌdɪsəˈpɔɪntɪd/", type: "adj.", meaning: "失望的", category: "receptive"},
             {word: "award ceremony", ipa: "/əˈwɔːrd ˈserəmoʊni/", type: "n.", meaning: "頒獎典禮", category: "receptive"},
@@ -292,7 +293,17 @@ const vocabData = {
             {word: "beverage", ipa: "/ˈbevərɪdʒ/", type: "n.", meaning: "飲品", category: "productive"},
             {word: "dessert", ipa: "/dɪˈzɜːrt/", type: "n.", meaning: "甜品", category: "productive"},
             {word: "cuisine", ipa: "/kwɪˈziːn/", type: "n.", meaning: "菜式/烹飪", category: "productive"},
-            {word: "quality", ipa: "/ˈkwɑːləti/", type: "n.", meaning: "質素", category: "productive"}
+            {word: "quality", ipa: "/ˈkwɑːləti/", type: "n.", meaning: "質素", category: "productive"},
+            {word: "appetite", ipa: "/ˈæpɪtaɪt/", type: "n.", meaning: "食慾", category: "receptive"},
+            {word: "buffet", ipa: "/bəˈfeɪ/", type: "n.", meaning: "自助餐", category: "receptive"},
+            {word: "cutlery", ipa: "/ˈkʌtləri/", type: "n.", meaning: "餐具", category: "receptive"},
+            {word: "appetiser", ipa: "/ˈæpɪtaɪzər/", type: "n.", meaning: "前菜/開胃菜", category: "receptive"},
+            {word: "main course", ipa: "/meɪn kɔːrs/", type: "n.", meaning: "主菜", category: "receptive"},
+            {word: "aroma", ipa: "/əˈroʊmə/", type: "n.", meaning: "香氣", category: "receptive"},
+            {word: "service charge", ipa: "/ˈsɜːrvɪs tʃɑːrdʒ/", type: "n.", meaning: "服務費", category: "receptive"},
+            {word: "well-seasoned", ipa: "/wel ˈsiːznd/", type: "adj.", meaning: "調味恰當的", category: "receptive"},
+            {word: "vegetarian", ipa: "/ˌvedʒəˈteriən/", type: "adj.", meaning: "素食的", category: "receptive"},
+            {word: "overpriced", ipa: "/ˌoʊvərˈpraɪst/", type: "adj.", meaning: "定價過高的", category: "receptive"}
         ]
     }
 };
