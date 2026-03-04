@@ -114,6 +114,10 @@
                         <span class="icon">🎲</span>
                         <span>混合測驗<br>(全部單元)</span>
                     </button>
+                    <button class="menu-btn" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #4a5568;" onclick="startReceptiveQuiz()">
+                        <span class="icon">👁️</span>
+                        <span>Receptive 生字<br>(只需辨認)</span>
+                    </button>
                     <button class="menu-btn success" onclick="showVocabulary()">
                         <span class="icon">📖</span>
                         <span>溫習生字<br>+讀音</span>
@@ -472,6 +476,62 @@ function showQuizMode(unitOrType) {
         document.getElementById('menu-section').classList.remove('active');
         document.getElementById('quiz-mode-section').classList.add('active');
     }
+}
+
+// Start Receptive vocabulary quiz (choice only)
+function startReceptiveQuiz() {
+    currentQuestions = [];
+    
+    // Collect all receptive words from all units
+    ['unit2', 'unit3', 'unit4'].forEach(unitId => {
+        const unit = vocabData[unitId];
+        if (!unit) return;
+        
+        const receptiveWords = unit.words.filter(w => w.category === 'receptive');
+        
+        receptiveWords.forEach(word => {
+            // Get other words from same unit as wrong options
+            const otherWords = unit.words.filter(w => w.word !== word.word);
+            const options = [word.word];
+            
+            // Add 3 wrong options
+            for (let j = 0; j < 3 && j < otherWords.length; j++) {
+                const randomWord = otherWords[Math.floor(Math.random() * otherWords.length)].word;
+                if (!options.includes(randomWord)) {
+                    options.push(randomWord);
+                }
+            }
+            
+            // Shuffle options
+            for (let j = options.length - 1; j > 0; j--) {
+                const k = Math.floor(Math.random() * (j + 1));
+                [options[j], options[k]] = [options[k], options[j]];
+            }
+            
+            currentQuestions.push({
+                type: 'multiple_choice',
+                question: `"${word.meaning}" 的英文是什麼？`,
+                word: word.word,
+                ipa: word.ipa,
+                options: options,
+                answer: options.indexOf(word.word),
+                explanation: `${word.word} ${word.ipa} (${word.type}) = ${word.meaning} [Receptive - 只需辨認]`
+            });
+        });
+    });
+    
+    // Shuffle all receptive questions
+    for (let i = currentQuestions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [currentQuestions[i], currentQuestions[j]] = [currentQuestions[j], currentQuestions[i]];
+    }
+    
+    if (currentQuestions.length === 0) {
+        alert('暫時沒有 Receptive 生字！');
+        return;
+    }
+    
+    startQuiz();
 }
 
 // Select mode (choice or fill)
